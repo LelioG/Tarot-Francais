@@ -2,6 +2,49 @@
 
 Application TypeScript jouable pour le Tarot français à 2, 3, 4 ou 5 joueurs, avec lobby Socket.IO, validation serveur, cartes SVG locales, plis, chien, appel du Roi et comptage automatique.
 
+## Site en ligne
+
+Le jeu est déployé sur Render et accessible ici :
+
+https://tarot-francais.onrender.com/
+
+### Tester le site
+
+Pour tester une partie :
+
+1. Ouvrir le site.
+2. Choisir un pseudo.
+3. Créer une partie.
+4. Choisir le mode : 2, 3, 4 ou 5 joueurs.
+5. Partager le code du salon avec les autres joueurs.
+6. Les autres joueurs rejoignent avec le code.
+7. Lancer la partie quand le salon est complet.
+
+### Modes disponibles en ligne
+
+- Mode 2 joueurs : variante avec 15 cartes en main et 6 tas visibles progressivement.
+- Mode 3 joueurs : Tarot classique avec chien de 6 cartes.
+- Mode 4 joueurs : Tarot classique avec chien de 6 cartes.
+- Mode 5 joueurs : Tarot avec appel du Roi et chien de 3 cartes.
+
+### Limites de la version gratuite Render
+
+Le site utilise l’hébergement gratuit Render.
+
+Conséquences possibles :
+
+- le premier chargement peut être lent si le site était inactif ;
+- les salons sont stockés en mémoire côté serveur ;
+- si le serveur redémarre ou se met en veille, les salons en cours peuvent disparaître ;
+- cette version est adaptée pour jouer entre amis, mais pas encore pour une utilisation publique intensive.
+
+### Données et sauvegarde
+
+Cette version ne possède pas encore de base de données.
+
+- Les comptes utilisateurs ne sont pas sauvegardés.
+- Les parties en cours ne sont pas persistées après redémarrage du serveur.
+- L’historique des scores n’est gardé que pendant la session serveur active.
 ## Installation
 
 ```bash
