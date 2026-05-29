@@ -31,85 +31,6 @@ Pour tester une partie :
 - Mode 4 joueurs : Tarot classique avec chien de 6 cartes.
 - Mode 5 joueurs : Tarot avec appel du Roi et chien de 3 cartes.
 
-### Limites de la version gratuite Render
-
-Le site utilise l’hébergement gratuit Render.
-
-Conséquences possibles :
-
-- le premier chargement peut être lent si le site était inactif ;
-- les salons sont stockés en mémoire côté serveur ;
-- si le serveur redémarre ou se met en veille, les salons en cours peuvent disparaître ;
-- cette version est adaptée pour jouer entre amis, mais pas encore pour une utilisation publique intensive.
-
-### Données et sauvegarde
-
-Cette version ne possède pas encore de base de données.
-
-- Les comptes utilisateurs ne sont pas sauvegardés.
-- Les parties en cours ne sont pas persistées après redémarrage du serveur.
-- L’historique des scores n’est gardé que pendant la session serveur active.
-## Installation
-
-```bash
-npm install
-```
-
-Les SVG des cartes sont versionnés dans `client/public/cards`. Vite les copie dans `client/dist/cards` pendant le build, puis Express les sert sur `/cards/...` avec le reste de l'application.
-
-## Développement
-
-```bash
-npm run dev
-```
-
-Par défaut :
-
-- client Vite : `http://localhost:5173`
-- serveur Express/Socket.IO : `http://localhost:3001`
-
-## Build
-
-```bash
-npm run build
-npm start
-```
-
-Après build, le serveur de production sert `client/dist`, les SVG dans `client/dist/cards`, l'API Express et Socket.IO sur le même domaine.
-
-## Tests
-
-```bash
-npm run test
-```
-
-Les tests unitaires couvrent :
-
-- création du deck de 78 cartes
-- mapping carte vers SVG embarqué dans `client/public/cards`
-- distributions 2, 3, 4 et 5 joueurs
-- enchères et surenchère
-- appel à 5, partenaire, carte au chien, self-call
-- écart du chien
-- Excuse jouée par le preneur ou la défense
-- variante 2 joueurs avec 15 cartes en main et 6 tas visibles progressivement
-- chien caché/révélé et sécurité de l'état public
-- machine d'état et transitions de manche
-- validation de coups légaux et illégaux
-- gagnant d'un pli
-- points, seuils et scores finaux à 2, 3, 4 et 5 joueurs
-
-## Structure
-
-```text
-client/               React + Vite, affichage de l'état public et envoi des actions
-client/public/cards/  SVG des cartes inclus dans le build Vite
-server/               Express + Socket.IO, salons, états privés, validation de toutes les actions
-shared/               Types et moteur métier Tarot testable
-```
-
-La logique de règles n'est pas dans React. Le client reçoit uniquement sa main, les informations publiques, les cartes jouées, les scores et le nombre de cartes adverses. La fonction `getPublicGameStateForPlayer` construit cette vue joueur par joueur.
-
 ## Règles implémentées
 
 - Parties à 2, 3, 4 et 5 joueurs.
@@ -206,3 +127,84 @@ Score en solo :
 
 - preneur gagnant : `+4 × score`, défenseurs `-1 × score`
 - preneur chuté : `-4 × score`, défenseurs `+1 × score`
+
+
+  ### Limites de la version gratuite Render
+
+Le site utilise l’hébergement gratuit Render.
+
+Conséquences possibles :
+
+- le premier chargement peut être lent si le site était inactif ;
+- les salons sont stockés en mémoire côté serveur ;
+- si le serveur redémarre ou se met en veille, les salons en cours peuvent disparaître ;
+- cette version est adaptée pour jouer entre amis, mais pas encore pour une utilisation publique intensive.
+
+### Données et sauvegarde
+
+Cette version ne possède pas encore de base de données.
+
+- Les comptes utilisateurs ne sont pas sauvegardés.
+- Les parties en cours ne sont pas persistées après redémarrage du serveur.
+- L’historique des scores n’est gardé que pendant la session serveur active.
+## Installation
+
+```bash
+npm install
+```
+
+Les SVG des cartes sont versionnés dans `client/public/cards`. Vite les copie dans `client/dist/cards` pendant le build, puis Express les sert sur `/cards/...` avec le reste de l'application.
+
+## Développement
+
+```bash
+npm run dev
+```
+
+Par défaut :
+
+- client Vite : `http://localhost:5173`
+- serveur Express/Socket.IO : `http://localhost:3001`
+
+## Build
+
+```bash
+npm run build
+npm start
+```
+
+Après build, le serveur de production sert `client/dist`, les SVG dans `client/dist/cards`, l'API Express et Socket.IO sur le même domaine.
+
+## Tests
+
+```bash
+npm run test
+```
+
+Les tests unitaires couvrent :
+
+- création du deck de 78 cartes
+- mapping carte vers SVG embarqué dans `client/public/cards`
+- distributions 2, 3, 4 et 5 joueurs
+- enchères et surenchère
+- appel à 5, partenaire, carte au chien, self-call
+- écart du chien
+- Excuse jouée par le preneur ou la défense
+- variante 2 joueurs avec 15 cartes en main et 6 tas visibles progressivement
+- chien caché/révélé et sécurité de l'état public
+- machine d'état et transitions de manche
+- validation de coups légaux et illégaux
+- gagnant d'un pli
+- points, seuils et scores finaux à 2, 3, 4 et 5 joueurs
+
+## Structure
+
+```text
+client/               React + Vite, affichage de l'état public et envoi des actions
+client/public/cards/  SVG des cartes inclus dans le build Vite
+server/               Express + Socket.IO, salons, états privés, validation de toutes les actions
+shared/               Types et moteur métier Tarot testable
+```
+
+La logique de règles n'est pas dans React. Le client reçoit uniquement sa main, les informations publiques, les cartes jouées, les scores et le nombre de cartes adverses. La fonction `getPublicGameStateForPlayer` construit cette vue joueur par joueur.
+
