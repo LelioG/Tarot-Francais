@@ -128,8 +128,7 @@ Score en solo :
 - preneur gagnant : `+4 × score`, défenseurs `-1 × score`
 - preneur chuté : `-4 × score`, défenseurs `+1 × score`
 
-
-  ### Limites de la version gratuite Render
+### Limites de la version gratuite Render
 
 Le site utilise l’hébergement gratuit Render.
 
