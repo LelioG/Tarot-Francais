@@ -1,0 +1,10 @@
+import { type Card, type CalledRank, type Suit, type SuitRank } from "./types";
+export declare function getCardImagePath(card: Pick<Card, "kind" | "suit" | "rank" | "trump">): string;
+export declare function createSuitCard(suit: Suit, rank: SuitRank): Card;
+export declare function createTrumpCard(trump: number): Card;
+export declare function createExcuseCard(): Card;
+export declare function createDeck(): Card[];
+export declare function findCardById(cardId: string): Card;
+export declare function makeCalledCard(suit: Suit, rank: CalledRank): Card;
+export declare function sortCards(cards: Card[]): Card[];
+export declare function cloneCard(card: Card): Card;
