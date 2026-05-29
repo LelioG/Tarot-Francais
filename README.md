@@ -1,9 +1,11 @@
 # Tarot français en ligne
 
 Application TypeScript jouable pour le Tarot français à 2, 3, 4 ou 5 joueurs, avec lobby Socket.IO, validation serveur, cartes SVG locales, plis, chien, appel du Roi et comptage automatique.
+
 <p align="center">
   <img src="./assets/tarot_francais_readme.gif" alt="Tarot français en ligne" width="900">
 </p>
+
 ## Site en ligne
 
 Le jeu est déployé sur Render et accessible ici :
