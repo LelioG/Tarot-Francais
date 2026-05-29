@@ -1,7 +1,9 @@
 # Tarot français en ligne
 
 Application TypeScript jouable pour le Tarot français à 2, 3, 4 ou 5 joueurs, avec lobby Socket.IO, validation serveur, cartes SVG locales, plis, chien, appel du Roi et comptage automatique.
-
+<p align="center">
+  <img src="./assets/tarot_francais_readme.gif" alt="Tarot français en ligne" width="900">
+</p>
 ## Site en ligne
 
 Le jeu est déployé sur Render et accessible ici :
@@ -202,27 +204,3 @@ Score en solo :
 
 - preneur gagnant : `+4 × score`, défenseurs `-1 × score`
 - preneur chuté : `-4 × score`, défenseurs `+1 × score`
-
-## Déploiement Render
-
-Créer un service Render de type **Web Service** depuis le repo.
-
-Paramètres recommandés :
-
-- Runtime : `Node`
-- Build Command : `npm install && npm run build`
-- Start Command : `npm start`
-- Publish Directory : ne rien renseigner, Express sert le client
-
-Variables d'environnement :
-
-- `NODE_ENV=production`
-- `PORT` : fourni automatiquement par Render, ne pas le fixer sauf besoin spécifique
-
-Fonctionnement en production :
-
-- `npm run build` compile `shared`, bundle `server` dans `server/dist`, puis build React/Vite dans `client/dist`.
-- Les cartes SVG de `client/public/cards` sont copiées automatiquement dans `client/dist/cards`.
-- `npm start` lance `node server/dist/index.js`.
-- Express sert `client/dist` et `/cards` depuis les assets buildés.
-- Socket.IO utilise le même domaine que le site, sans service séparé.
